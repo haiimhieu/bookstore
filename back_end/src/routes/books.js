@@ -49,6 +49,7 @@ router.get('/', (req, res) => {
   });
 });
 
+// API call to get all results for a search query
 router.get('/search', (req, res) => {
   const searchQuery = req.query.searchQuery || "";
   const page = parseInt(req.query.page) || 1;
@@ -91,6 +92,7 @@ router.get('/search', (req, res) => {
   });
 })
 
+// API call to get all details of one book based on the book_id
 router.get('/:bookId', (req, res) => {
   const { bookId } = req.params;
 

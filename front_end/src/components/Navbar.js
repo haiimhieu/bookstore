@@ -64,6 +64,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+// Navigation bar that will show up on top of every page
 function Navbar() {
     const { user, setUser, isAdmin, setIsAdmin } = useAuth()
     const [anchorEl, setAnchorEl] = useState(null);
@@ -112,8 +113,9 @@ function Navbar() {
                     </Typography>
 
 
-
+                    
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexGrow: 1 }}>
+                        {/* Genre drop down that will allow the user to search for books in a particular genre*/}
                         <Button
                             onClick={handleClick}
                             sx={{ my: 2, color: 'white', display: 'block' }}
@@ -131,7 +133,8 @@ function Navbar() {
                                 </MenuItem>
                             ))}
                         </Menu>
-
+                        
+                        {/* Search bar that allows the user to search for books with certain terms*/}
                         <Search>
                             <SearchIconWrapper>
                                 <SearchIcon />
@@ -150,6 +153,8 @@ function Navbar() {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
+
+                        {/* Order buttons depending on the user's level of access */}
                         {user ? (<Link to="/myorders">
                             <Button sx={{ color: 'white', ml: 2 }}>My Orders</Button>
                         </Link>) : null}
@@ -158,7 +163,8 @@ function Navbar() {
                         </Link>) : null}
 
                     </Box>
-
+                    
+                    {/* Login, sign up buttons or order button depending on user's level of access*/}
                     {!user ? (
                         <Button
                             component={Link}

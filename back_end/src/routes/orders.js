@@ -3,6 +3,7 @@ import db from "../utils/dbconfig.js";
 
 const router = express.Router();
 
+// API call to get all orders and orders items
 router.get('/', (req, res) => {
     const ordersQuery = `
         SELECT 
@@ -54,6 +55,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// API call to create a new order with the order items
 router.post('/create', (req, res) => {
     const { user_id, total_price, items } = req.body;
 
@@ -96,7 +98,7 @@ router.post('/create', (req, res) => {
     });
 });
 
-
+// API call to get the orders information for one user based on their id
 router.get('/user/:user_id', (req, res) => {
     const userId = req.params.user_id;
 
@@ -151,6 +153,7 @@ router.get('/user/:user_id', (req, res) => {
     });
 });
 
+// API call to cancel a particular order based on the id
 router.patch('/cancel/:orderId', (req, res) => {
     const { orderId } = req.params;
     const userId = req.session.user?.id || req.body.user_id;
@@ -189,6 +192,7 @@ router.patch('/cancel/:orderId', (req, res) => {
     );
 });
 
+// API call to modify the status of an order based on the id
 router.patch('/status/:orderId', (req, res) => {
     const { orderId } = req.params;
     const { status } = req.body;

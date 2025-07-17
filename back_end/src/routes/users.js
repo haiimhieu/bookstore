@@ -3,6 +3,7 @@ const router = Router()
 import db from '../utils/dbconfig.js';
 import bcrypt from 'bcrypt';
 
+// API call to check if there is a user logged in
 router.get("/me", (req, res) => {
     if (req.session && req.session.user) {
         res.json({ loggedIn: true, user: req.session.user });
@@ -11,6 +12,7 @@ router.get("/me", (req, res) => {
     }
 });
 
+// API call to login to the site
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
 
@@ -42,6 +44,7 @@ router.post('/login', (req, res) => {
     });
 });
 
+// API call to sign up for the site
 router.post('/register', (req, res) => {
     const { username, email, password } = req.body;
 
@@ -85,6 +88,7 @@ router.post('/register', (req, res) => {
     );
 });
 
+// API call to log out of the site
 router.post('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {

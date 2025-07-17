@@ -3,6 +3,7 @@ import db from '../utils/dbconfig.js';
 
 const router = Router();
 
+// API call to get all the reviews of one book based on the id
 router.get('/book/:bookId', (req, res) => {
     const { bookId } = req.params;
 
@@ -26,6 +27,7 @@ router.get('/book/:bookId', (req, res) => {
     });
 });
 
+// API call to get the average rating of one book based on the id
 router.get('/book/getAverage/:bookId', (req, res) => {
     const { bookId } = req.params;
 
@@ -41,6 +43,7 @@ router.get('/book/getAverage/:bookId', (req, res) => {
     })
 })
 
+// API call to add or update reviews
 router.post('/addOrUpdate', (req, res) => {
     const { user_id, book_id, rating, content } = req.body;
 
@@ -79,6 +82,7 @@ router.post('/addOrUpdate', (req, res) => {
     );
 });
 
+// API call to delete a review
 router.delete('/delete', (req, res) => {
     const { user_id, book_id } = req.body;
 

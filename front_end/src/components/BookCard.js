@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 
+// Book card component that is used to display all the book details on pages 
 function BookCard({ id, title, genre, author, price, rating, image_url }) {
     return (
         <Card
